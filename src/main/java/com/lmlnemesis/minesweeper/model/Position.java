@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,16 +26,19 @@ public class Position {
     private Integer id;
 
     @Column(nullable = false)
-    private Boolean mine = false;
-
-    @Column(nullable = false)
     private Integer column;
 
     @Column(nullable = false)
     private Integer row;
 
+    @Enumerated(EnumType.STRING)
+    private Flag flag = Flag.NONE;
+
     @Column(nullable = false)
     private Boolean active = false;
+
+    @Column(nullable = false)
+    private Boolean mine = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_active_positions")

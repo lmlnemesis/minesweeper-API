@@ -2,15 +2,18 @@ package com.lmlnemesis.minesweeper.dto.request;
 
 import com.lmlnemesis.minesweeper.dto.Size;
 import lombok.Data;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
 public class NewGameRequest {
 
-    @NotNull
+    @NotNull(message = "mineAmount amount can not be null")
     private Integer mineAmount;
 
     @NotNull
+    @Valid
     private Size size;
 
 }

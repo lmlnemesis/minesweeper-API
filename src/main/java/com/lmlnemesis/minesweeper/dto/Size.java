@@ -8,9 +8,9 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Size {
 
-    @NotNull
+    @NotNull(message = "rows amount can not be null")
     private Integer rows;
-    @NotNull
+    @NotNull(message = "columns amount can not be null")
     private Integer columns;
 
 }

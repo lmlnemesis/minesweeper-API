@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/game")
@@ -25,9 +24,9 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @Valid
+
     @PostMapping(path = "/new-game", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> newGame(@RequestBody @NotNull NewGameRequest newGameRequest) {
+    public ResponseEntity<Integer> newGame(@RequestBody @Valid NewGameRequest newGameRequest) {
         return new ResponseEntity<>(
                 gameService.createNewGame(newGameRequest.getMineAmount(), newGameRequest.getSize()),
                 HttpStatus.OK);
