@@ -12,7 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public class Position {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer positionId;
 
     @Column(nullable = false)
-    private Integer column;
+    private Integer colNbr;
 
     @Column(nullable = false)
-    private Integer row;
+    private Integer rowNbr;
 
     @Enumerated(EnumType.STRING)
     private Flag flag = Flag.NONE;
@@ -40,8 +39,7 @@ public class Position {
     @Column(nullable = false)
     private Boolean mine = false;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_active_positions")
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Board.class)
     private Board board;
 
     @CreationTimestamp
@@ -55,13 +53,13 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
-        return Objects.equals(id, position.id) &&
-                Objects.equals(column, position.column) &&
-                Objects.equals(row, position.row);
+        return Objects.equals(positionId, position.positionId) &&
+                Objects.equals(colNbr, position.colNbr) &&
+                Objects.equals(rowNbr, position.rowNbr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, column, row);
+        return Objects.hash(positionId, colNbr, rowNbr);
     }
 }
