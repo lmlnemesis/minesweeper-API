@@ -1,6 +1,7 @@
 package com.lmlnemesis.minesweeper.controller;
 
 import com.lmlnemesis.minesweeper.dto.request.NewGameRequest;
+import com.lmlnemesis.minesweeper.dto.request.PlayRequest;
 import com.lmlnemesis.minesweeper.dto.response.BoardResponse;
 import com.lmlnemesis.minesweeper.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class GameController {
     @GetMapping(path = "/board/{boardId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BoardResponse> getBoard(@PathVariable(value = "boardId") Integer boardId) {
         return new ResponseEntity<>(gameService.getBoard(boardId), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/board/{boardId}/play", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BoardResponse> play(@PathVariable(value = "boardId") Integer boardId,
+                                              @RequestBody @Valid PlayRequest request) {
+        return new ResponseEntity<>(gameService.play(boardId, request), HttpStatus.OK);
     }
 
 }
