@@ -1,6 +1,6 @@
 package com.lmlnemesis.minesweeper.dto.request;
 
-import com.lmlnemesis.minesweeper.dto.Size;
+import com.lmlnemesis.minesweeper.dto.SizeDto;
 import lombok.Data;
 
 import javax.validation.Valid;
@@ -14,6 +14,6 @@ public class NewGameRequest {
 
     @NotNull
     @Valid
-    private Size size;
+    private SizeDto size;
 
 }

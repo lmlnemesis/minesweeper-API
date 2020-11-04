@@ -1,6 +1,6 @@
 package com.lmlnemesis.minesweeper.model;
 
-public enum Flag {
+public enum EFlag {
     NONE,
     QUESTION,
     RED

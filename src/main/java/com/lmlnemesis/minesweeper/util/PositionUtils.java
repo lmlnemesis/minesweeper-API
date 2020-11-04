@@ -12,7 +12,7 @@ public class PositionUtils {
 
     public static boolean existPosition(List<Position> positions, Integer row, Integer col) {
         return positions.stream()
-                .anyMatch(position -> position.getRowNbr() == row && position.getColNbr() == col);
+                .anyMatch(position -> position.getRowNbr().equals(row) && position.getColNbr().equals(col));
     }
 
     public static Integer getRandomPosition(Integer maxValue) {

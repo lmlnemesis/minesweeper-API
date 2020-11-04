@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Data
-public class Size {
+public class SizeDto {
 
     @NotNull(message = "rows amount can not be null")
     private Integer rows;

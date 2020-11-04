@@ -31,7 +31,7 @@ public class Position {
     private Integer rowNbr;
 
     @Enumerated(EnumType.STRING)
-    private Flag flag = Flag.NONE;
+    private EFlag flag = EFlag.NONE;
 
     @Column(nullable = false)
     private Boolean active = false;
